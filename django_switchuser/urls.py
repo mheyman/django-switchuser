@@ -1,4 +1,7 @@
-from django.conf.urls import url
+try:
+    from django.urls import re_path 
+except ImportError:
+    from django.conf.urls import url as re_path
 try:
     from django.conf.urls import patterns
 except ImportError:
@@ -7,6 +10,6 @@ except ImportError:
 from . import views
 
 urlpatterns = patterns("", *[
-    url(r"^$", views.su_login, name="su-login"),
-    url(r"^logout$", views.su_logout, name="su-logout"),
+    re_path(r"^$", views.su_login, name="su-login"),
+    re_path(r"^logout$", views.su_logout, name="su-logout"),
 ])
